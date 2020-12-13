@@ -14,7 +14,7 @@ WPNbviewer is a fork of nbconvert, but it does not require you to add additional
 
 ## Installation
 
-Download dist/wp-nbviewer.zip.
+Download wp-nbviewer.zip from [releases](https://github.com/xhhuango/wp-nbviewer/releases).
 
 On WordPress, go to Plugins->Add New->Upload Plugin, and upload wp-nbviewer.zip and install it.
 
