@@ -4,7 +4,7 @@
 Plugin Name: WP Nbviewer
 Plugin URI: https://github.com/xhhuango/wp-nbviewer
 Description: A WordPress plugin for nbviewer.
-Version: 1.0
+Version: 1.1
 Author: Wayne
 Author URI: https://waynestalk.com/
 License: MIT
@@ -30,12 +30,15 @@ function wpnbviewer_getHtmlById($id, $html)
     libxml_use_internal_errors(true);
     $dom->loadHTML($html);
     $node = $dom->getElementById($id);
-    return $node->ownerDocument->saveHTML($node);
+    return empty($node) ? '' : $node->ownerDocument->saveHTML($node);
 }
 
 function wpnbviewer_Shortcode($attributes)
 {
     extract(shortcode_atts(array('url' => ''), $attributes));
+    if (empty($url)) {
+        return '';
+    }
     $nbviewerHtml = wpnbviewer_getHtmlFromNbviewer($url);
     return $nbviewerHtml;
 }
